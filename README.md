@@ -13,7 +13,7 @@ Started the day defining the actors and the actions and doing some user's storie
 #### UML Class Diagram
 
 <p align="center">
-  <img src="UML_Diagrams/Version1/PersonaBeachPark.drawio" alt="UML Class Diagram">
+  <img src="UML_Diagrams/Version1/PesonaBeachPark.drawio.png" alt="UML Class Diagram">
 </p>
 
 
