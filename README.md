@@ -16,6 +16,12 @@ Started the day defining the actors and the actions and doing some user's storie
   <img src="UML_Diagrams/Version1/PesonaBeachPark.drawio.png" alt="UML Class Diagram">
 </p>
 
+### 11/20/2022
 
+Started the java project based on the class diagram, did some business logic related to the equipments inventory (add, remove, increase and decrease)
+
+<p align="center">
+  <img src="UML_Diagrams/Version2/PersonaBeachPark.png" alt="UML Class Diagram">
+</p>
  
 
