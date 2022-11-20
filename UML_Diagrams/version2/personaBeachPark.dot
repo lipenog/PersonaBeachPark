@@ -1,0 +1,50 @@
+digraph "personaBeachPark" {
+
+splines  = ortho;
+fontname = "Inconsolata";
+
+node [colorscheme = ylgnbu4];
+edge [colorscheme = dark28, dir = both];
+
+ActivitiesTeamMember [shape = record, pos = "5.150,16.164!"    , label = "{ ActivitiesTeamMember |  }"];
+Address              [shape = record, pos = "3.600,4.613!"     , label = "{ Address |  }"];
+AdministrationMember [shape = record, pos = "2.223,15.761!"    , label = "{ AdministrationMember |  }"];
+Employee             [shape = record, pos = "-2.133,13.101!"   , label = "{ Employee |  }"];
+EmployeeOccupation   [shape = record, pos = "5.226,13.885!"    , label = "{ EmployeeOccupation |  }"];
+Equipment            [shape = record, pos = "5.144,3.563!"     , label = "{ Equipment | - name : String\l - quantity : int\l|+ toString() : String\l + increaseQuantity(int) : void\l + decreaseQuantity(int) : void\l| name : String\l  quantity : int\l }"];
+EquipmentInventory   [shape = record, pos = "-4.577,3.716!"    , label = "{ EquipmentInventory | - equipments : ArrayList\<Equipment\>\l|+ decreaseEquipment(String, int) : void\l + removeEquipment(String) : void\l + addEquipment(String, int) : void\l + increaseEquipment(String, int) : void\l + getEquipment(String) : Equipment\l| instance : EquipmentInventory\l  equipments : ArrayList\<Equipment\>\l }"];
+Facade               [shape = record, pos = "-5.907,10.000!"   , label = "{ Facade | + removeEquipment(String) : void\l + logEquipments() : void\l + decreaseEquipment(String, int) : void\l + addEquipment(String, int) : void\l }"];
+FoodServiceMember    [shape = record, pos = "8.004,15.761!"    , label = "{ FoodServiceMember |  }"];
+Guest                [shape = record, pos = "3.972,12.302!"    , label = "{ Guest | - pass : IPass\l - familyMembers : ArrayList\<Member\>\l - passType : PassType\l|+ addMember(Member) : void\l + removeMember(Member) : void\l| passType : PassType\l  pass : IPass\l  familyMembers : ArrayList\<Member\>\l }"];
+IPass                [shape = record, pos = "10.331,12.581!"   , label = "{ \<\<interface\>\>\nIPass |  price : double\l  passType : PassType\l }"];
+Member               [shape = record, pos = "6.095,7.833!"     , label = "{ Member | - photo : Photo\l - lastName : String\l - firstName : String\l| photo : Photo\l  firstName : String\l  lastName : String\l }"];
+MonthlyPass          [shape = record, pos = "10.331,8.599!"    , label = "{ MonthlyPass |  price : double\l  passType : PassType\l }"];
+PassType             [shape = record, pos = "1.636,8.177!"     , label = "{ \<\<enumeration\>\>\nPassType | + values() : PassType[]\l + valueOf(String) : PassType\l }"];
+Photo                [shape = record, pos = "9.701,6.638!"     , label = "{ Photo |  }"];
+UltimatePass         [shape = record, pos = "8.275,9.470!"     , label = "{ UltimatePass |  price : double\l  passType : PassType\l }"];
+User                 [shape = record, pos = "0.682,9.470!"     , label = "{ User |  }"];
+UserRegistration     [shape = record, pos = "0.420,11.766!"    , label = "{ UserRegistration |  }"];
+UserType             [shape = record, pos = "-0.443,4.840!"    , label = "{ \<\<enumeration\>\>\nUserType | + values() : UserType[]\l + valueOf(String) : UserType\l }"];
+YearPass             [shape = record, pos = "12.386,9.342!"    , label = "{ YearPass |  price : double\l  passType : PassType\l }"];
+
+ActivitiesTeamMember -> EmployeeOccupation   [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+AdministrationMember -> EmployeeOccupation   [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+Employee             -> EmployeeOccupation   [color = "#595959", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "occupation\n1"];
+Employee             -> UserRegistration     [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+EquipmentInventory   -> Equipment            [color = "#595959", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "equipments\n*"];
+Facade               -> EquipmentInventory   [color = "#595959", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "equipmentInventory\n1"];
+Facade               -> User                 [color = "#595959", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "users\n*"];
+FoodServiceMember    -> EmployeeOccupation   [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+Guest                -> IPass                [color = "#595959", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "pass\n1"];
+Guest                -> Member               [color = "#595959", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "familyMembers\n*"];
+Guest                -> PassType             [color = "#595959", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "passType\n1"];
+Guest                -> UserRegistration     [color = "#000082", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+Member               -> Photo                [color = "#595959", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "photo\n1"];
+MonthlyPass          -> IPass                [color = "#008200", style = dashed, arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+UltimatePass         -> IPass                [color = "#008200", style = dashed, arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+User                 -> Address              [color = "#595959", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "address\n1"];
+User                 -> UserRegistration     [color = "#595959", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "userRegistration\n1"];
+User                 -> UserType             [color = "#595959", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "userType\n1"];
+YearPass             -> IPass                [color = "#008200", style = dashed, arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+
+}
