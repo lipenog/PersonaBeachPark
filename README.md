@@ -8,7 +8,7 @@ Persona Beach Park is a brand-new themed park that will be located in Alfenas-MG
 
 ### 11/19/2022
 
-Started the day defining the actors and the actions and doing some user's stories. Also did the first version of the class diagram
+Started the day defining the actors and the actions and doing some user's stories. Also did the first version of the class diagram, nothing fancy, just a simple one to have an idea of the interactions.
 
 #### UML Class Diagram
 
