@@ -36,6 +36,9 @@ public class Member {
         this.photo = photo;
     }
 
+    public String getFullName(){
+        return firstName + lastName;
+    }
     @Override
     public String toString() {
         return "(" +

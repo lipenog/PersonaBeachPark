@@ -18,7 +18,7 @@ public class User {
     private String lastName;
     private String mail;
     private String phoneNumber;
-    private String Id;
+    private String id;
     private String login;
     private String password;
 
@@ -26,7 +26,7 @@ public class User {
     public User(String firstName, String lastName, String id) {
         this.firstName = firstName;
         this.lastName = lastName;
-        Id = id;
+        this.id = id;
     }
 
     public User(String firstName, String lastName, String id, UserType userType){
@@ -92,11 +92,11 @@ public class User {
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getLogin() {
@@ -126,7 +126,7 @@ public class User {
     @Override
     public String toString() {
         return "[" +
-                "Id = '" + Id +
+                "Id = '" + id +
                 ", Name = '" + firstName + " " + lastName + '\'' +
                 ", Type = " + userType + '\'' +
                 " -> " + userRegistration.toString() +

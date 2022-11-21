@@ -24,6 +24,22 @@ public class Guest extends UserRegistration {
         familyMembers.add(e);
     }
 
+    public Member getMember(String firstName, String lastName){
+        for(Member x : familyMembers){
+            if(x.getFullName().equals(firstName + lastName)){
+                return x;
+            }
+        }
+        return null;
+    }
+    public void addMember(String firstName, String lastName){
+        Member x = getMember(firstName, lastName);
+        if(x != null){
+            return; // throw
+        }
+        familyMembers.add(new Member(firstName, lastName));
+    }
+
     public void removeMember(Member e) throws FamilyMemberException {
         if(!familyMembers.contains(e)){
             throw new FamilyMemberException("This member does not exist!");
@@ -31,6 +47,13 @@ public class Guest extends UserRegistration {
         familyMembers.remove(e);
     }
 
+    public void removeMember(String firstName, String lastName){
+        Member x = getMember(firstName, lastName);
+        if(x == null){
+            return; // throw
+        }
+        familyMembers.remove(x);
+    }
     public ArrayList<Member> getFamilyMembers(){
         return familyMembers;
     }
