@@ -38,9 +38,9 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{" +
+        return "[" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                '}';
+                ']';
     }
 }
