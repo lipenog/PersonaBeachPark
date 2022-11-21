@@ -12,8 +12,9 @@ public class Guest extends UserRegistration {
     private IPass pass;
     private ArrayList<Member> familyMembers;
 
-    public Guest(){
+    public Guest(PassType passType){
         familyMembers = new ArrayList<>();
+        this.passType = passType;
     }
 
     public void addMember(Member e) throws FamilyMemberException {
@@ -48,5 +49,21 @@ public class Guest extends UserRegistration {
 
     public void setPass(IPass pass) {
         this.pass = pass;
+    }
+
+    public String logFamily(){
+        String aux = "";
+        for(Member e : familyMembers){
+            aux += e.toString();
+        }
+        return aux;
+    }
+
+    @Override
+    public String toString() {
+        return "[" +
+                "passType=" + passType +
+                ", familyMembers=" + logFamily() +
+                ']';
     }
 }

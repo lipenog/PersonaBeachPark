@@ -1,6 +1,10 @@
 package com.example.personabeachpark.employees.types;
 
-import com.example.personabeachpark.employees.EmployeeOccupation;
+import com.example.personabeachpark.employees.Employee;
 
-public class ActivitiesTeamMember extends EmployeeOccupation {
+public class ActivitiesTeamMember extends Employee {
+    
+    public ActivitiesTeamMember() {
+
+    }
 }

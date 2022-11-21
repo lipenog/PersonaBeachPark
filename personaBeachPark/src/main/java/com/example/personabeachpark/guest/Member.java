@@ -35,4 +35,12 @@ public class Member {
     public void setPhoto(Photo photo) {
         this.photo = photo;
     }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }

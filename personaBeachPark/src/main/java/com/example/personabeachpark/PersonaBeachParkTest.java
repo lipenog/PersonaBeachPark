@@ -1,5 +1,7 @@
 package com.example.personabeachpark;
 
+import com.example.personabeachpark.usersData.user.UserType;
+
 public class PersonaBeachParkTest {
     public static void main(String[] args) {
         Facade facade = new Facade();
@@ -16,5 +18,12 @@ public class PersonaBeachParkTest {
 
 
         facade.logEquipments();
+
+        facade.addUserToData("1", "Yu", "Narukami", UserType.ADM);
+        facade.addUserToData("2", "Rise", "Kujikawa", UserType.ACTIVITIES);
+        facade.addUserToData("3", "Tohru", "Adachi", UserType.GUEST);
+        facade.addUserToData("4", "Teddie", "Teddie", UserType.FOOD);
+
+        facade.logUsers();
     }
 }

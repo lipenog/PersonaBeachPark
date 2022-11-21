@@ -5,5 +5,8 @@ import com.example.personabeachpark.usersData.user.UserRegistration;
 public class Employee extends UserRegistration {
     private double wage;
     private String workHours;
-    private EmployeeOccupation occupation;
+
+    public Employee(){
+
+    }
 }
