@@ -35,3 +35,9 @@ Since I had those state patterns, I decided to implement factories to create new
 <p align="center">
   <img src="UML_Diagrams/version3/personaBeachPark3.png" alt="UML Class Diagram">
 </p>
+
+
+
+### TO DO
+
+maybe change the factory pattern to the constructor pattern https://refactoring.guru/design-patterns/builder
