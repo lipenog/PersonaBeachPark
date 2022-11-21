@@ -126,11 +126,10 @@ public class User {
     @Override
     public String toString() {
         return "[" +
-                "Id='" + Id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", userType=" + userType + '\'' +
-                userRegistration.toString() +
+                "Id = '" + Id +
+                ", Name = '" + firstName + " " + lastName + '\'' +
+                ", Type = " + userType + '\'' +
+                " -> " + userRegistration.toString() +
                 ']';
     }
 }

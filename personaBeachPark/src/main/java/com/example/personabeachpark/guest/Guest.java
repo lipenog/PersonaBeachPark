@@ -61,9 +61,9 @@ public class Guest extends UserRegistration {
 
     @Override
     public String toString() {
-        return "[" +
-                "passType=" + passType +
-                ", familyMembers=" + logFamily() +
-                ']';
+        return "{" +
+                "Pass = " + passType +
+                ", Family Members = " + logFamily() +
+                "}";
     }
 }
