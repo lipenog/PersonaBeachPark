@@ -2,16 +2,12 @@ package com.example.personabeachpark.usersData;
 
 import com.example.personabeachpark.usersData.data.Address;
 import com.example.personabeachpark.usersData.data.Photo;
-import com.example.personabeachpark.usersData.user.UserRegistration;
-import com.example.personabeachpark.usersData.user.UserType;
-import com.example.personabeachpark.usersData.userFactory.UserRegistrationFactory;
+import com.example.personabeachpark.usersData.userBuilder.UserBuilder;
 
-public class User {
+public abstract class User {
     private Address address;
-    private UserRegistration userRegistration;
-    private UserType userType;
     private Photo photo;
-    private UserRegistrationFactory userFactory = UserRegistrationFactory.getInstance();
+    private UserBuilder userBuilder = UserBuilder.getInstance();
 
 
     private String firstName;
@@ -22,17 +18,8 @@ public class User {
     private String login;
     private String password;
 
-    // add a userRegistration factory, and a param String userType
-    public User(String firstName, String lastName, String id) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.id = id;
-    }
+    public User(){
 
-    public User(String firstName, String lastName, String id, UserType userType){
-        this(firstName, lastName, id);
-        userRegistration = userFactory.createUserRegistration(userType);
-        this.userType = userType;
     }
 
     public Address getAddress() {
@@ -43,13 +30,7 @@ public class User {
         this.address = address;
     }
 
-    public UserRegistration getUserRegistration() {
-        return userRegistration;
-    }
 
-    public void setUserRegistration(UserRegistration userRegistration) {
-        this.userRegistration = userRegistration;
-    }
 
     public Photo getPhoto() {
         return photo;
@@ -115,21 +96,12 @@ public class User {
         this.password = password;
     }
 
-    public UserType getUserType() {
-        return userType;
-    }
 
-    public void setUserType(UserType userType) {
-        this.userType = userType;
-    }
 
     @Override
     public String toString() {
         return "[" +
-                "Id = '" + id +
-                ", Name = '" + firstName + " " + lastName + '\'' +
-                ", Type = " + userType + '\'' +
-                " -> " + userRegistration.toString() +
-                ']';
+                "Id=" + id +
+                ", Name= '" + firstName + " " + lastName + '\'';
     }
 }

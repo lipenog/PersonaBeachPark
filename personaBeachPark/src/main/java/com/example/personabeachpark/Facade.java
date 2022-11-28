@@ -1,23 +1,28 @@
 package com.example.personabeachpark;
 
+import com.example.personabeachpark.employees.occupation.EmployeeOccupation;
 import com.example.personabeachpark.equipmentsInventory.Equipment;
 import com.example.personabeachpark.equipmentsInventory.EquipmentInventory;
 import com.example.personabeachpark.exceptions.equipmentsRelated.EquipmentInventoryException;
 import com.example.personabeachpark.exceptions.guestRelated.FamilyMemberException;
 import com.example.personabeachpark.guest.Guest;
 import com.example.personabeachpark.guest.Member;
+import com.example.personabeachpark.guest.passes.types.PassType;
 import com.example.personabeachpark.usersData.User;
-import com.example.personabeachpark.usersData.user.UserType;
+import com.example.personabeachpark.usersData.userBuilder.UserBuilder;
+
 
 import java.util.ArrayList;
 
 public class Facade {
     private ArrayList<User> users;
     private EquipmentInventory equipmentInventory;
+    private UserBuilder userBuilder;
 
     public Facade(){
         users = new ArrayList<>();
         equipmentInventory = EquipmentInventory.getInstance();
+        userBuilder = UserBuilder.getInstance();
     }
 
     public void addEquipment(String name, int quantity){
@@ -53,11 +58,21 @@ public class Facade {
         }
     }
 
-    public void addUserToData(String id, String fName, String lName, UserType userType){
+    public void addGuestToData(String id, String fName, String lName, PassType type){
         if(getUser(id) != null){
             return;
         }
-        users.add(new User(fName, lName, id, userType));
+        userBuilder.setGuest(type);
+        userBuilder.setSuperBasic(fName, lName, id);
+        users.add(userBuilder.getUser());
+    }
+    public void addEmployeeToData(String id, String fName, String lName, double wage, String workHours, EmployeeOccupation type){
+        if(getUser(id) != null){
+            return;
+        }
+        userBuilder.setEmployee(type, wage, workHours);
+        userBuilder.setSuperBasic(fName, lName, id);
+        users.add(userBuilder.getUser());
     }
 
     public void removeUserFromData(String id){
@@ -80,8 +95,8 @@ public class Facade {
         if(user == null){
             return;
         }
-        if(user.getUserType() == UserType.GUEST){
-            Guest guest = (Guest) user.getUserRegistration();
+        if(user instanceof Guest){
+            Guest guest = (Guest) user;
             try{
                 guest.addMember(member);
             } catch (FamilyMemberException e){

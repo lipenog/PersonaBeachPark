@@ -1,20 +1,23 @@
 package com.example.personabeachpark.guest;
 
 import com.example.personabeachpark.exceptions.guestRelated.FamilyMemberException;
+import com.example.personabeachpark.guest.guestFactory.PassFactory;
 import com.example.personabeachpark.guest.passes.IPass;
 import com.example.personabeachpark.guest.passes.types.PassType;
-import com.example.personabeachpark.usersData.user.UserRegistration;
+import com.example.personabeachpark.usersData.User;
 
 import java.util.ArrayList;
 
-public class Guest extends UserRegistration {
+public class Guest extends User {
     private PassType passType;
     private IPass pass;
     private ArrayList<Member> familyMembers;
+    private PassFactory passFactory = PassFactory.getInstance();
 
     public Guest(PassType passType){
         familyMembers = new ArrayList<>();
         this.passType = passType;
+        pass = passFactory.createPass(passType);
     }
 
     public void addMember(Member e) throws FamilyMemberException {
@@ -84,9 +87,10 @@ public class Guest extends UserRegistration {
 
     @Override
     public String toString() {
-        return "{" +
-                "Pass = " + passType +
-                ", Family Members = " + logFamily() +
-                "}";
+        return  super.toString()
+                +"{" +
+                "Pass= '" + passType + '\'' +
+                ", Family Members= " + logFamily() +
+                "}" + "]";
     }
 }

@@ -1,7 +1,8 @@
 package com.example.personabeachpark;
 
+import com.example.personabeachpark.employees.occupation.EmployeeOccupation;
 import com.example.personabeachpark.guest.Member;
-import com.example.personabeachpark.usersData.user.UserType;
+import com.example.personabeachpark.guest.passes.types.PassType;
 
 public class PersonaBeachParkTest {
     public static void main(String[] args) {
@@ -20,10 +21,11 @@ public class PersonaBeachParkTest {
 
         facade.logEquipments();
 
-        facade.addUserToData("1", "Yu", "Narukami", UserType.GUEST);
-        facade.addUserToData("2", "Rise", "Kujikawa", UserType.ACTIVITIES);
-        facade.addUserToData("3", "Tohru", "Adachi", UserType.GUEST);
-        facade.addUserToData("4", "Teddie", "Teddie", UserType.FOOD);
+        facade.addGuestToData("1", "Yu", "Narukami", PassType.ULTIMATE);
+        facade.addEmployeeToData("2", "Rise", "Kujikawa", 2500, "50", EmployeeOccupation.ACTIVITIES);
+        facade.addEmployeeToData("3", "Tohru", "Adachi", 15000, "10", EmployeeOccupation.ADM);
+        facade.addEmployeeToData("4", "Teddie", "Teddie", 5, "150000", EmployeeOccupation.FOODS);
+
 
         facade.addMemberToUserFamily("1", new Member("Nanako", "Dojima"));
         facade.addMemberToUserFamily("1", new Member("Ryotaro", "Dojima"));

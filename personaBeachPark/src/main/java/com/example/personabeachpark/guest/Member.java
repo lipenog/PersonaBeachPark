@@ -42,7 +42,7 @@ public class Member {
     @Override
     public String toString() {
         return "(" +
-                "Name = '" + firstName + " " + lastName + '\'' +
+                "Name= '" + firstName + " " + lastName + '\'' +
                 ")";
     }
 }
