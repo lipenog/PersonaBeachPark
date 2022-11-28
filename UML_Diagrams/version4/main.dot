@@ -1,0 +1,60 @@
+digraph "main" {
+
+splines  = ortho;
+fontname = "Inconsolata";
+
+node [colorscheme = ylgnbu4];
+edge [colorscheme = dark28, dir = both];
+
+ActivitiesTeamMember [shape = record, pos = "-5.743,9.160!"    , label = "{ ActivitiesTeamMember |  }"];
+Address              [shape = record, pos = "-0.360,16.189!"   , label = "{ Address | + getNumber() : int\l + getComplement() : String\l + getStreet() : String\l + setNumber(int) : void\l + getCity() : String\l + getNeighborhood() : String\l + setNeighborhood(String) : void\l + setStreet(String) : void\l + setComplement(String) : void\l + setCity(String) : void\l }"];
+AdministrationMember [shape = record, pos = "-5.184,9.998!"    , label = "{ AdministrationMember |  }"];
+Employee             [shape = record, pos = "-1.792,11.952!"   , label = "{ Employee | + setWage(double) : void\l + getOccupation() : Occupation\l + setOccupation(Occupation) : void\l + toString() : String\l + setWorkHours(String) : void\l + getOccupationType() : EmployeeOccupation\l + getWage() : double\l + getWorkHours() : String\l + setOccupationType(EmployeeOccupation) : void\l }"];
+Equipment            [shape = record, pos = "3.339,4.000!"     , label = "{ Equipment | + toString() : String\l + decreaseQuantity(int) : void\l + setName(String) : void\l + increaseQuantity(int) : void\l + getQuantity() : int\l + setQuantity(int) : void\l + getName() : String\l }"];
+EquipmentInventory   [shape = record, pos = "-0.888,4.000!"    , label = "{ EquipmentInventory | + increaseEquipment(String, int) : void\l + decreaseEquipment(String, int) : void\l + getEquipments() : ArrayList\<Equipment\>\l + addEquipment(String, int) : void\l + getInstance() : EquipmentInventory\l + getEquipment(String) : Equipment\l + removeEquipment(String) : void\l }"];
+Facade               [shape = record, pos = "-4.729,8.020!"    , label = "{ Facade | + getUser(String) : User\l + addEquipment(String, int) : void\l + removeEquipment(String) : void\l + logEquipments() : void\l + addMemberToUserFamily(String, Member) : void\l + logUsers() : void\l + decreaseEquipment(String, int) : void\l + addGuestToData(String, String, String, PassType) : void\l + addEmployeeToData(String, String, String, double, String, EmployeeOccupation) : void\l + removeUserFromData(String) : void\l }"];
+FoodServiceMember    [shape = record, pos = "-8.340,9.998!"    , label = "{ FoodServiceMember |  }"];
+Guest                [shape = record, pos = "7.302,12.869!"    , label = "{ Guest | + addMember(Member) : void\l + getPass() : IPass\l + logFamily() : String\l + getFamilyMembers() : ArrayList\<Member\>\l + setPassType(PassType) : void\l + toString() : String\l + addMember(String, String) : void\l + removeMember(Member) : void\l + removeMember(String, String) : void\l + getPassType() : PassType\l + getMember(String, String) : Member\l + setPass(IPass) : void\l }"];
+IPass                [shape = record, pos = "12.263,7.714!"    , label = "{ \<\<interface\>\>\nIPass | + getPassType() : PassType\l + getPrice() : double\l }"];
+Member               [shape = record, pos = "11.730,12.086!"   , label = "{ Member | + setPhoto(Photo) : void\l + getLastName() : String\l + setLastName(String) : void\l + toString() : String\l + getFirstName() : String\l + setFirstName(String) : void\l + getPhoto() : Photo\l + getFullName() : String\l }"];
+MonthlyPass          [shape = record, pos = "12.263,4.822!"    , label = "{ MonthlyPass | + getPrice() : double\l + getPassType() : PassType\l }"];
+Occupation           [shape = record, pos = "-6.191,10.820!"   , label = "{ Occupation |  }"];
+OccupationFactory    [shape = record, pos = "-6.934,12.629!"   , label = "{ OccupationFactory | + getInstance() : OccupationFactory\l + createOccupation(EmployeeOccupation) : Occupation\l }"];
+PassFactory          [shape = record, pos = "8.642,7.714!"     , label = "{ PassFactory | + createPass(PassType) : IPass\l + getInstance() : PassFactory\l }"];
+PersonaBeachParkTest [shape = record, pos = "-4.288,3.783!"    , label = "{ PersonaBeachParkTest | + main(String[]) : void\l }"];
+Photo                [shape = record, pos = "7.416,14.691!"    , label = "{ Photo | + getSrc() : String\l + setSrc(String) : void\l }"];
+UltimatePass         [shape = record, pos = "13.705,6.118!"    , label = "{ UltimatePass | + getPrice() : double\l + getPassType() : PassType\l }"];
+User                 [shape = record, pos = "3.736,16.445!"    , label = "{ User | + setPassword(String) : void\l + getPhoto() : Photo\l + setPhoto(Photo) : void\l + setId(String) : void\l + toString() : String\l + setLastName(String) : void\l + getPassword() : String\l + getPhoneNumber() : String\l + getAddress() : Address\l + getFirstName() : String\l + setLogin(String) : void\l + setAddress(Address) : void\l + getLogin() : String\l + getId() : String\l + getMail() : String\l + setMail(String) : void\l + setPhoneNumber(String) : void\l + setFirstName(String) : void\l + getLastName() : String\l }"];
+UserBuilder          [shape = record, pos = "2.348,7.186!"     , label = "{ UserBuilder | + getInstance() : UserBuilder\l + setGuest(PassType) : void\l + setBasic(String, String, String, String, String, String, String) : void\l + getUser() : User\l + setSuperBasic(String, String, String) : void\l + setEmployee(EmployeeOccupation, double, String) : void\l + setAdvanced(Photo, Address) : void\l }"];
+YearPass             [shape = record, pos = "10.698,6.118!"    , label = "{ YearPass | + getPrice() : double\l + getPassType() : PassType\l }"];
+
+ActivitiesTeamMember -> Occupation           [color = "#589df6", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+AdministrationMember -> Occupation           [color = "#589df6", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+Employee             -> Occupation           [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "occupation\n1"];
+Employee             -> OccupationFactory    [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "occupationFactory\n1"];
+Employee             -> User                 [color = "#589df6", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+EquipmentInventory   -> Equipment            [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "equipments\n*"];
+EquipmentInventory   -> Equipment            [color = "#bbbbbb", style = dashed, arrowtail = none    , arrowhead = vee     , taillabel = "", label = "«create»", headlabel = ""];
+Facade               -> EquipmentInventory   [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "equipmentInventory\n1"];
+Facade               -> User                 [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "users\n*"];
+Facade               -> UserBuilder          [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "userBuilder\n1"];
+FoodServiceMember    -> Occupation           [color = "#589df6", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+Guest                -> IPass                [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "pass\n1"];
+Guest                -> Member               [color = "#bbbbbb", style = dashed, arrowtail = none    , arrowhead = vee     , taillabel = "", label = "«create»", headlabel = ""];
+Guest                -> Member               [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "familyMembers\n*"];
+Guest                -> PassFactory          [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "passFactory\n1"];
+Guest                -> User                 [color = "#589df6", style = solid , arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+MonthlyPass          -> IPass                [color = "#609350", style = dashed, arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+OccupationFactory    -> Occupation           [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "occupation\n1"];
+PassFactory          -> IPass                [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "pass\n1"];
+PersonaBeachParkTest -> Facade               [color = "#bbbbbb", style = dashed, arrowtail = none    , arrowhead = vee     , taillabel = "", label = "«create»", headlabel = ""];
+UltimatePass         -> IPass                [color = "#609350", style = dashed, arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+User                 -> Address              [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "address\n1"];
+User                 -> Photo                [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "photo\n1"];
+User                 -> UserBuilder          [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "userBuilder\n1"];
+UserBuilder          -> Employee             [color = "#bbbbbb", style = dashed, arrowtail = none    , arrowhead = vee     , taillabel = "", label = "«create»", headlabel = ""];
+UserBuilder          -> Guest                [color = "#bbbbbb", style = dashed, arrowtail = none    , arrowhead = vee     , taillabel = "", label = "«create»", headlabel = ""];
+UserBuilder          -> User                 [color = "#bbbbbb", style = solid , arrowtail = diamond , arrowhead = vee     , taillabel = "1", label = "", headlabel = "user\n1"];
+YearPass             -> IPass                [color = "#609350", style = dashed, arrowtail = none    , arrowhead = normal  , taillabel = "", label = "", headlabel = ""];
+
+}
