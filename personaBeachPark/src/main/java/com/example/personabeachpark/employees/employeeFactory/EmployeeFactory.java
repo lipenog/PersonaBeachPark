@@ -1,33 +1,33 @@
 package com.example.personabeachpark.employees.employeeFactory;
 
+import com.example.personabeachpark.employees.Employee;
 import com.example.personabeachpark.employees.occupation.EmployeeOccupation;
 import com.example.personabeachpark.employees.types.ActivitiesTeamMember;
 import com.example.personabeachpark.employees.types.AdministrationMember;
 import com.example.personabeachpark.employees.types.FoodServiceMember;
-import com.example.personabeachpark.employees.types.Occupation;
 
-public class OccupationFactory {
-    private static OccupationFactory singleton;
-    private Occupation occupation;
-    private OccupationFactory(){
+public class EmployeeFactory {
+    private static EmployeeFactory singleton;
+    private Employee employee;
+    private EmployeeFactory(){
 
     }
 
-    public static OccupationFactory getInstance(){
+    public static EmployeeFactory getInstance(){
         if(singleton == null){
-            singleton = new OccupationFactory();
+            singleton = new EmployeeFactory();
         }
         return singleton;
     }
 
-    public Occupation createOccupation(EmployeeOccupation type){
+    public Employee createOccupation(EmployeeOccupation type){
         if(type == EmployeeOccupation.ACTIVITIES){
-            occupation = new ActivitiesTeamMember();
+            employee = new ActivitiesTeamMember();
         } else if (type == EmployeeOccupation.ADM) {
-            occupation = new AdministrationMember();
+            employee = new AdministrationMember();
         } else if(type == EmployeeOccupation.FOODS) {
-            occupation = new FoodServiceMember();
+            employee = new FoodServiceMember();
         }
-        return occupation;
+        return employee;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.personabeachpark.guest;
 
+import com.example.personabeachpark.booking.areas.BookedArea;
 import com.example.personabeachpark.exceptions.guestRelated.FamilyMemberException;
 import com.example.personabeachpark.guest.guestFactory.PassFactory;
 import com.example.personabeachpark.guest.passes.IPass;
@@ -13,11 +14,13 @@ public class Guest extends User {
     private IPass pass;
     private ArrayList<Member> familyMembers;
     private PassFactory passFactory = PassFactory.getInstance();
+    private ArrayList<BookedArea> booked;
 
     public Guest(PassType passType){
         familyMembers = new ArrayList<>();
         this.passType = passType;
         pass = passFactory.createPass(passType);
+        booked = new ArrayList<>();
     }
 
     public void addMember(Member e) throws FamilyMemberException {
@@ -56,6 +59,21 @@ public class Guest extends User {
             return; // throw
         }
         familyMembers.remove(x);
+    }
+    public boolean isBooked(BookedArea bookedArea){
+        for(BookedArea x : booked){
+            if(x.equals(bookedArea)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void addBooking(BookedArea bookedArea){
+        booked.add(bookedArea);
+    }
+
+    public void removeBooking(BookedArea bookedArea){
+        booked.remove(bookedArea);
     }
     public ArrayList<Member> getFamilyMembers(){
         return familyMembers;

@@ -1,4 +1,4 @@
-package com.example.personabeachpark;
+package com.example.personabeachpark.usersData.userService;
 
 import com.example.personabeachpark.employees.occupation.EmployeeOccupation;
 import com.example.personabeachpark.exceptions.guestRelated.FamilyMemberException;
@@ -10,16 +10,22 @@ import com.example.personabeachpark.usersData.userBuilder.UserBuilder;
 
 import java.util.ArrayList;
 
-public class Facade {
-    private ArrayList<User> users;
+public class UserService {
+    private static UserService singleton;
     private UserBuilder userBuilder;
+    private ArrayList<User> users;
 
-    public Facade(){
+    private UserService(){
         users = new ArrayList<>();
         userBuilder = UserBuilder.getInstance();
     }
 
-
+    public static UserService getInstance() {
+        if(singleton == null) {
+            singleton = new UserService();
+        }
+        return singleton;
+    }
 
     public void logUsers(){
         for(User x : users){
@@ -74,3 +80,4 @@ public class Facade {
         }
     }
 }
+

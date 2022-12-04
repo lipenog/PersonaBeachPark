@@ -1,27 +1,20 @@
 package com.example.personabeachpark.employees;
 
-import com.example.personabeachpark.employees.employeeFactory.OccupationFactory;
+import com.example.personabeachpark.Facade;
+import com.example.personabeachpark.employees.employeeFactory.EmployeeFactory;
 import com.example.personabeachpark.employees.occupation.EmployeeOccupation;
-import com.example.personabeachpark.employees.types.Occupation;
 import com.example.personabeachpark.usersData.User;
 
-public class Employee extends User {
+public abstract class Employee extends User {
     private double wage;
     private String workHours;
+    private Facade facade;
 
     private EmployeeOccupation occupationType;
-    private Occupation occupation;
-    private OccupationFactory occupationFactory = OccupationFactory.getInstance();
+    private EmployeeFactory employeeFactory = EmployeeFactory.getInstance();
 
     public Employee(){
-
-    }
-
-    public Employee(double wage, String workHours, EmployeeOccupation occupationType) {
-        this.wage = wage;
-        this.workHours = workHours;
-        this.occupationType = occupationType;
-        occupation = occupationFactory.createOccupation(occupationType);
+        facade = new Facade();
     }
 
     public double getWage() {
@@ -48,12 +41,8 @@ public class Employee extends User {
         this.occupationType = occupationType;
     }
 
-    public Occupation getOccupation() {
-        return occupation;
-    }
-
-    public void setOccupation(Occupation occupation) {
-        this.occupation = occupation;
+    public Facade getFacade() {
+        return facade;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.personabeachpark.usersData.userBuilder;
 
 import com.example.personabeachpark.employees.Employee;
+import com.example.personabeachpark.employees.employeeFactory.EmployeeFactory;
 import com.example.personabeachpark.employees.occupation.EmployeeOccupation;
 import com.example.personabeachpark.guest.Guest;
 import com.example.personabeachpark.guest.passes.types.PassType;
@@ -11,8 +12,9 @@ import com.example.personabeachpark.usersData.data.Photo;
 public class UserBuilder {
     private static UserBuilder singleton;
     private User user;
+    private EmployeeFactory employeeFactory;
     private UserBuilder(){
-
+        employeeFactory = EmployeeFactory.getInstance();
     }
     public static UserBuilder getInstance(){
         if(singleton == null){
@@ -26,7 +28,10 @@ public class UserBuilder {
     }
 
     public void setEmployee(EmployeeOccupation type, double wage, String workHours){
-        user = new Employee(wage, workHours, type);
+        user = employeeFactory.createOccupation(type);
+        Employee employee = (Employee) user;
+        employee.setWage(wage);
+        employee.setWorkHours(workHours);
     }
 
     public void setSuperBasic(String firstName, String lastName, String id){
