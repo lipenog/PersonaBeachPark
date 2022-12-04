@@ -36,8 +36,19 @@ Since I had those state patterns, I decided to implement factories to create new
   <img src="UML_Diagrams/version3/personaBeachPark3.png" alt="UML Class Diagram">
 </p>
 
+### 11/28/2022
+
+Started a new branch to do some several changes in the user class, now User is an abstract class, Employee and Guest are state patterns that extend User. Each state has a factory, and I implemented a new pattern UserBuilder that creates a new ‘user’ using both factories. 
+
+
+#### UML Class Diagram
+
+<p align="center">
+  <img src="UML_Diagrams/version4/personaBeachPark.png" alt="UML Class Diagram">
+</p>
 
 
 ### TO DO
 
-maybe change the factory pattern to the constructor pattern https://refactoring.guru/design-patterns/builder
+[DONE - 11/28/2022] maybe change the factory pattern to the constructor pattern https://refactoring.guru/design-patterns/builder
+
