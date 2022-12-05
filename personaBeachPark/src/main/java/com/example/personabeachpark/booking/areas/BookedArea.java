@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class BookedArea {
     private Area area;
     private LocalDate date;
+    private String guestId;
 
     public BookedArea(Area area, int month, int day, int year){
         this.area = area;
@@ -28,11 +29,17 @@ public class BookedArea {
         return area.getAreaID();
     }
 
+    public String getGuestId() {
+        return guestId;
+    }
+
+    public void setGuestId(String guestId) {
+        this.guestId = guestId;
+    }
+
     @Override
     public String toString() {
-        return "[" +
-                "area=" + area.toString() +
-                ", date=" + date +
-                ']';
+        return "Book -> " + "guest: " + guestId +
+                " area: " + getAreaID() + " date: " + date;
     }
 }

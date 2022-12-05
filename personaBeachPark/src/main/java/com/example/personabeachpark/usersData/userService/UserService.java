@@ -8,23 +8,16 @@ import com.example.personabeachpark.guest.passes.types.PassType;
 import com.example.personabeachpark.usersData.User;
 import com.example.personabeachpark.usersData.userBuilder.UserBuilder;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UserService {
-    private static UserService singleton;
     private UserBuilder userBuilder;
-    private ArrayList<User> users;
+    private Set<User> users;
 
-    private UserService(){
-        users = new ArrayList<>();
+    public UserService(){
+        users = new HashSet<>();
         userBuilder = UserBuilder.getInstance();
-    }
-
-    public static UserService getInstance() {
-        if(singleton == null) {
-            singleton = new UserService();
-        }
-        return singleton;
     }
 
     public void logUsers(){

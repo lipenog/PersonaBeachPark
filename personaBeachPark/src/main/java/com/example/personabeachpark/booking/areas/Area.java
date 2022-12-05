@@ -38,10 +38,7 @@ public class Area {
 
     @Override
     public String toString() {
-        return "[" +
-                "areaID='" + areaID + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ']';
+        return "Area -> area: " + areaID + " name: " + name +
+                " description: " + description;
     }
 }

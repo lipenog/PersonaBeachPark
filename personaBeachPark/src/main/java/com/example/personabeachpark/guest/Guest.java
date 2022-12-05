@@ -7,20 +7,21 @@ import com.example.personabeachpark.guest.passes.IPass;
 import com.example.personabeachpark.guest.passes.types.PassType;
 import com.example.personabeachpark.usersData.User;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Guest extends User {
     private PassType passType;
     private IPass pass;
-    private ArrayList<Member> familyMembers;
+    private Set<Member> familyMembers;
     private PassFactory passFactory = PassFactory.getInstance();
-    private ArrayList<BookedArea> booked;
+    private Set<BookedArea> booked;
 
     public Guest(PassType passType){
-        familyMembers = new ArrayList<>();
+        familyMembers = new HashSet<>();
         this.passType = passType;
         pass = passFactory.createPass(passType);
-        booked = new ArrayList<>();
+        booked = new HashSet<>();
     }
 
     public void addMember(Member e) throws FamilyMemberException {
@@ -75,7 +76,7 @@ public class Guest extends User {
     public void removeBooking(BookedArea bookedArea){
         booked.remove(bookedArea);
     }
-    public ArrayList<Member> getFamilyMembers(){
+    public Set<Member> getFamilyMembers(){
         return familyMembers;
     }
 
@@ -95,6 +96,10 @@ public class Guest extends User {
         this.pass = pass;
     }
 
+    public Set<BookedArea> getBooks(){
+        return booked;
+    }
+
     public String logFamily(){
         String aux = "";
         for(Member e : familyMembers){
@@ -102,6 +107,8 @@ public class Guest extends User {
         }
         return aux;
     }
+
+
 
     @Override
     public String toString() {
