@@ -50,10 +50,12 @@ public class BookAreaService {
         areas.add(new Area(areaID, name, type));
     }
 
-    public void removeArea(String areaID){
+    public void removeArea(String areaID) throws BookingException{
         if(getArea(areaID) == null){
             return;
         }
+        // delete all books from that area
+        removeBooks(getBookByArea(areaID));
         areas.remove(getArea(areaID));
     }
 
@@ -122,5 +124,7 @@ public class BookAreaService {
         return result;
     }
 
-
+    public void removeBooks(Set<BookedArea> bookedAreas){
+        this.bookedAreas.removeAll(bookedAreas);
+    }
 }

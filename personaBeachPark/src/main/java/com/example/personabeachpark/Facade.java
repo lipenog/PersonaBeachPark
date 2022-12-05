@@ -36,8 +36,13 @@ public class Facade {
     }
 
     public void removeUser(String id){
+        User user = userService.getUser(id);
+        // if is a guest all of his books will be deleted
+        if(user instanceof Guest){
+            Guest guest = (Guest) user;
+            bookAreaService.removeBooks(guest.getBooks());
+        }
         userService.removeUserFromData(id);
-        // call methods to delete every book if it is a guest
     }
 
     public void logUser(){
@@ -64,8 +69,11 @@ public class Facade {
     }
 
     public void removeArea(String areaId){
-        bookAreaService.removeArea(areaId);
-        // call the methods to clear all the books of this area
+        try {
+            bookAreaService.removeArea(areaId);
+        } catch (BookingException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void removeBook(String guestId, String areaId, LocalDate date){

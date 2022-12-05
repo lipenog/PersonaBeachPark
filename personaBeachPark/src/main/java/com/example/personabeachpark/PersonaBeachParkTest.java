@@ -38,7 +38,8 @@ public class PersonaBeachParkTest {
         facade.logArea();
         facade.logBook();
 
-        System.out.println(facade.getBooksByArea("2"));
-        System.out.println(facade.getBooksByGuest("1"));
+        facade.removeUser("5");
+        facade.logArea();
+        facade.logBook();
     }
 }
