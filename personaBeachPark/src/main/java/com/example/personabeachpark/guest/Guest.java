@@ -2,6 +2,7 @@ package com.example.personabeachpark.guest;
 
 import com.example.personabeachpark.booking.areas.BookedArea;
 import com.example.personabeachpark.exceptions.guestRelated.FamilyMemberException;
+import com.example.personabeachpark.food.order.OrderPad;
 import com.example.personabeachpark.guest.guestFactory.PassFactory;
 import com.example.personabeachpark.guest.passes.IPass;
 import com.example.personabeachpark.guest.passes.types.PassType;
@@ -16,6 +17,7 @@ public class Guest extends User {
     private Set<Member> familyMembers;
     private PassFactory passFactory = PassFactory.getInstance();
     private Set<BookedArea> booked;
+    private OrderPad orderPad;
 
     public Guest(PassType passType){
         familyMembers = new HashSet<>();
@@ -108,7 +110,17 @@ public class Guest extends User {
         return aux;
     }
 
+    public int getPassCode(){
+        return passType.getCode();
+    }
 
+    public OrderPad getOrderPad() {
+        return orderPad;
+    }
+
+    public void setOrderPad(OrderPad orderPad) {
+        this.orderPad = orderPad;
+    }
 
     @Override
     public String toString() {

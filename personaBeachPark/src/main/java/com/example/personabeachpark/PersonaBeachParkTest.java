@@ -24,10 +24,10 @@ public class PersonaBeachParkTest {
 
         facade.logUser();
 
-        facade.addArea("0", "grill pool", "");
-        facade.addArea("1", "abcx", "");
-        facade.addArea("2", "cdes", "");
-        facade.addArea("3", "asd", "");
+        facade.addArea("0", "grill pool", "", PassType.YEAR);
+        facade.addArea("1", "abcx", "", PassType.ULTIMATE);
+        facade.addArea("2", "cdes", "", PassType.ULTIMATE);
+        facade.addArea("3", "asd", "", PassType.MONTHLY);
 
         facade.addBook("1", "2", LocalDate.of(2022, 12, 15));
         facade.addBook("5", "3", LocalDate.of(2022, 12, 15));
@@ -38,7 +38,7 @@ public class PersonaBeachParkTest {
         facade.logArea();
         facade.logBook();
 
-        facade.removeUser("5");
+
         facade.logArea();
         facade.logBook();
     }

@@ -49,8 +49,8 @@ public class Facade {
         userService.logUsers();
     }
 
-    public void addArea(String areaID, String name, String type){
-        bookAreaService.addArea(areaID, name, type);
+    public void addArea(String areaID, String name, String type, PassType passType){
+        bookAreaService.addArea(areaID, name, type, passType);
     }
 
     public void addBook(String guestId, String areaId, LocalDate date){

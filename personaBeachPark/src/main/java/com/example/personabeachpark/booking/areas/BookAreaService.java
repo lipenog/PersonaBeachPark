@@ -2,6 +2,7 @@ package com.example.personabeachpark.booking.areas;
 
 import com.example.personabeachpark.exceptions.bookingRelated.BookingException;
 import com.example.personabeachpark.guest.Guest;
+import com.example.personabeachpark.guest.passes.types.PassType;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -43,11 +44,11 @@ public class BookAreaService {
         return null;
     }
 
-    public void addArea(String areaID, String name, String type){
+    public void addArea(String areaID, String name, String type, PassType passType){
         if(getArea(areaID) != null){
             return;
         }
-        areas.add(new Area(areaID, name, type));
+        areas.add(new Area(areaID, name, type, passType));
     }
 
     public void removeArea(String areaID) throws BookingException{
@@ -71,6 +72,9 @@ public class BookAreaService {
         }
         if(LocalDate.now().isAfter(date)){
             throw new BookingException("can not book in the past");
+        }
+        if(guest.getPassCode() < area.getPassAccessCode()){
+            throw new BookingException("guest do not have the pass to access this area");
         }
         BookedArea bookedArea = new BookedArea(area, date);
         bookedArea.setGuestId(guest.getId());
